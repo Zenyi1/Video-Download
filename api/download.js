@@ -1,19 +1,14 @@
 const ytdl = require('ytdl-core');
 
 module.exports = async (req, res) => {
-  try {
-    const { URL } = req.query;
-
-    const videoInfo = await ytdl.getInfo(URL);
-    const format = ytdl.chooseFormat(videoInfo.formats, { quality: 'highest' });
-
-    res.setHeader('Content-Type', 'video/mp4');
-    res.setHeader('Content-Disposition', `attachment; filename="video.mp4"`);
-
-    ytdl(URL, { format }).pipe(res);
-  } catch (error) {
-    console.error('Error occurred:', error);
-    res.status(500).send('Internal Server Error');
+  const videoId = req.query.videoId;
+  if (videoId) {
+    const videoUrl = 'https://www.youtube.com/watch?v=' + videoId;
+    const file = ytdl(videoUrl, { filter: 'audioonly' });
+    res.setHeader('Content-Disposition', 'attachment; filename="video.mp3"');
+    file.pipe(res);
+  } else {
+    res.status(400).send('Invalid request');
   }
 };
 

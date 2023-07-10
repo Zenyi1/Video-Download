@@ -1,41 +1,38 @@
-* {
-    text-align: center;
-}
-.heading {
-    font-family: Arial;
-    margin-top:40vh;
-}
-.URL-input, .convert-button {
-    font-size:1.3em;
-    padding:5px 10px;
-}
-.URL-input {
-    border-radius:4px 0px 0px 4px;
-    width:30em;
-    text-align: left;
-    border:2px solid #EEEEEE;
-    background: #EEEEEE;
-    outline:none;
-}
-.URL-input:focus {
-    border:2px solid #0485ff;
-}
-.convert-button {
-    border-radius:0px 4px 4px 0px;
-    border:2px solid #0485ff;
-    background: #0485ff;
-    color:white;
-}
-
-
 body {
-    background-image: url('abuelo.jpg');
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
   }
-
-h1 {
-    color: aliceblue;
-}
+  
+  .container {
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+  }
+  
+  p {
+    color: #777;
+    margin-top: 10px;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
