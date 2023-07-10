@@ -6,5 +6,5 @@ convertBtn.addEventListener('click', () => {
     sendURL(URLinput.value);
 });
 function sendURL(URL) {
-    window.location.href = `http://localhost:4000/download?URL=${URL}`;
+    window.location.href = `https://video-download-indol.vercel.app/download?URL=${URL}`;
 }
