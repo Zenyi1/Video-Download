@@ -1,4 +1,4 @@
-const ytdl = require('ytdl-core-discord');
+const ytdl = require('ytdl-core');
 
 module.exports = async (req, res) => {
   try {
@@ -6,18 +6,14 @@ module.exports = async (req, res) => {
 
     const videoInfo = await ytdl.getInfo(URL);
     const format = ytdl.chooseFormat(videoInfo.formats, { quality: 'highest' });
-    const stream = ytdl(URL, { format });
 
     res.setHeader('Content-Type', 'video/mp4');
     res.setHeader('Content-Disposition', `attachment; filename="video.mp4"`);
 
-    await stream.pipe(res);
-
-    stream.on('end', () => {
-      res.end();
-    });
+    ytdl(URL, { format }).pipe(res);
   } catch (error) {
     console.error('Error occurred:', error);
     res.status(500).send('Internal Server Error');
   }
 };
+
