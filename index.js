@@ -1,14 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const ytdl = require('ytdl-core');
-const app = express();
+const download = require('./api/download');
 
-app.use(cors());
+module.exports = (req, res) => {
+  const { pathname = '/' } = req.nextUrl;
 
-app.get('/download', (req,res) => {
-    var URL = req.query.URL;
-    res.header('Content-Disposition', 'attachment; filename="video.mp4"');
-    ytdl(URL, {
-    format: 'mp4'
-    }).pipe(res);
-})
+  if (pathname === '/download') {
+    return download(req, res);
+  }
+
+  // Handle other routes or serve your static website
+};
